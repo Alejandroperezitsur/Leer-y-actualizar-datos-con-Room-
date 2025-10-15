@@ -95,7 +95,7 @@ fun ItemEntryScreen(
 }
 
 @Composable
-fun ItemEntryBody(
+internal fun ItemEntryBody(
     itemUiState: ItemUiState,
     onItemValueChange: (ItemDetails) -> Unit,
     onSaveClick: () -> Unit,

@@ -22,7 +22,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.inventory.data.Item
 import com.example.inventory.data.ItemsRepository
-import java.text.NumberFormat
 
 /**
  * ViewModel to validate and insert items in the Room database.
@@ -71,22 +70,6 @@ data class ItemDetails(
     val price: String = "",
     val quantity: String = "",
 )
-
-/**
- * Extension function to convert [ItemDetails] to [Item]. If the value of [ItemDetails.price] is
- * not a valid [Double], then the price will be set to 0.0. Similarly if the value of
- * [ItemDetails.quantity] is not a valid [Int], then the quantity will be set to 0
- */
-fun ItemDetails.toItem(): Item = Item(
-    id = id,
-    name = name,
-    price = price.toDoubleOrNull() ?: 0.0,
-    quantity = quantity.toIntOrNull() ?: 0
-)
-
-fun Item.formatedPrice(): String {
-    return NumberFormat.getCurrencyInstance().format(price)
-}
 
 /**
  * Extension function to convert [Item] to [ItemUiState]
